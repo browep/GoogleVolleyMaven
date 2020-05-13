@@ -20,7 +20,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath rootProject.ext.androidGradleVersion
+        classpath 'com.android.tools.build:gradle:3.6.3'
     }
 }
 
@@ -31,8 +31,14 @@ repositories {
 }
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion = '25.0.2'
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+    }
 }
 
 apply from: 'rules.gradle'
